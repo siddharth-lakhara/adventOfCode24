@@ -1,9 +1,10 @@
 import day1.Day1;
+import day2.Day2;
 
 public class Main {
     public static void main(String[] args) {
 
-        Day1 d = new Day1();
-        d.solvePart2();
+        Day2 d = new Day2();
+        d.solvePart1();
     }
 }
