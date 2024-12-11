@@ -1,8 +1,8 @@
-import day9.Day9;
+import day10.Day10;
 
 public class Main {
     public static void main(String[] args) {
-        Day9 d = new Day9();
-        d.solvePart2();
+        Day10 d = new Day10();
+        d.solvePart1();
     }
 }
