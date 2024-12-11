@@ -75,7 +75,7 @@ public class Day9 {
 
     public void solvePart2() {
         long answer = 0;
-        try (Scanner inStream = Helper.readFile("day9_example")) {
+        try (Scanner inStream = Helper.readFile("day9_input")) {
             while (inStream.hasNextLine()) {
                 String line = inStream.nextLine();
                 answer = calculateChecksum2(new StringBuffer(line));
@@ -115,6 +115,7 @@ public class Day9 {
 
                 int fileId = fillVoid(emptySpace, emptySpaceIdx, fileIdCache);
                 if (fileId == -1) {
+                    position += emptySpace;
                     idx++;
                     continue;
                 }
