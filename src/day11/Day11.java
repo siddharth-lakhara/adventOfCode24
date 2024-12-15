@@ -80,29 +80,30 @@ public class Day11 {
         }
 
         if (isPresentInCache(number, depth)) {
+            System.out.println("DBEUG: Cache HIT: " + number + " " + depth);
             return cache.get(number).get(depth);
+        } else {
+            System.out.println("DBEUG: Cache MISS: " + number + " " + depth);
         }
 
         String numStr = String.valueOf(number);
         if (number == 0) {
-            long count = countStones(1, depth - 1);
-            updateCache(1, depth - 1, count);
+            long count = countStonesWithCache(1, depth - 1);
+            updateCache(number, depth, count);
             return count;
         } else if (numStr.length() % 2 == 0) {
             long leftSplit = Long.parseLong(numStr.substring(0, numStr.length() / 2));
-            long leftCount = countStones(leftSplit, depth - 1);
-            updateCache(leftSplit, depth - 1, leftCount);
+            long leftCount = countStonesWithCache(leftSplit, depth - 1);
 
             long rightSplit = Long.parseLong(numStr.substring(numStr.length() / 2));
-            long rightCount = countStones(rightSplit, depth - 1);
-            updateCache(rightSplit, depth - 1, rightCount);
+            long rightCount = countStonesWithCache(rightSplit, depth - 1);
 
             updateCache(number, depth, leftCount+rightCount);
             return leftCount + rightCount;
         } else {
             long newNumber = number * 2024;
-            long count = countStones(newNumber, depth - 1);
-            updateCache(newNumber, depth - 1, count);
+            long count = countStonesWithCache(newNumber, depth - 1);
+            updateCache(number, depth, count);
             return count;
         }
     }
